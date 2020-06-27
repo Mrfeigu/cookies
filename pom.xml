@@ -18,6 +18,7 @@
     <modules>
         <module>provider</module>
         <module>spring</module>
+        <module>exercise</module>
     </modules>
 
     <dependencies>
