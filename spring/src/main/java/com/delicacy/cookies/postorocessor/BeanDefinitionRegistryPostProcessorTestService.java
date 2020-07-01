@@ -1,13 +1,12 @@
-package com.delicacy.cookies.BeanDefinitionRegistryPostProcessor;
+package com.delicacy.cookies.postorocessor;
 
+import com.delicacy.cookies.service.TargetService;
 import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.beans.factory.support.BeanDefinitionRegistryPostProcessor;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
-import org.springframework.context.annotation.DependsOn;
+import org.springframework.beans.factory.support.GenericBeanDefinition;
 import org.springframework.stereotype.Service;
 
 
@@ -17,30 +16,25 @@ import org.springframework.stereotype.Service;
  * @date 2020/06/28
  */
 @Service
-public class TestService implements BeanDefinitionRegistryPostProcessor, ApplicationContextAware, InitializingBean {
+public class BeanDefinitionRegistryPostProcessorTestService implements BeanDefinitionRegistryPostProcessor {
 
     @Override
     public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry) throws BeansException {
         System.out.println("执行postProcessBeanDefinitionRegistry");
+        BeanDefinition targetService = registry.getBeanDefinition("targetService");
+        // 增加一个新的bean,类型与target相似
+        GenericBeanDefinition targetService2 = new GenericBeanDefinition(targetService);
+        registry.registerBeanDefinition("targetService2", targetService2);
     }
 
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
         // 这个优先级没有postProcessBeanDefinitionRegistry高
         System.out.println("执行postProcessBeanFactory");
+        TargetService targetService = (TargetService)beanFactory.getBean("targetService");
+        TargetService targetService2 = (TargetService)beanFactory.getBean("targetService2");
+        System.out.println(targetService.equals(targetService2));
     }
-
-    @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        System.out.println("执行setApplicationContext");
-    }
-
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        System.out.println("执行afterPropertiesSet");
-    }
-
-
 
 }
 

@@ -1,6 +1,5 @@
 package com.delicacy.cookies.service;
 
-import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -12,10 +11,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class TargetService {
 
-    @Value("${target.username: 张三}")
-    private String userName;
-    @Value("${target.age: 1}")
-    private Integer age;
+    private String userName = "张三";
+    private Integer age = 11;
 
     public String printlnMsg(){
         return userName + age;
