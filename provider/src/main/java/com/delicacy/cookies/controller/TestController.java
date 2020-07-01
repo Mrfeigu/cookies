@@ -15,7 +15,7 @@ import javax.annotation.Resource;
 public class TestController {
 
 
-    @Resource(name = "targetService2")
+    @Resource(name = "targetService3")
     private TargetService targetService;
 
     @GetMapping("/test")

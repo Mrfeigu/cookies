@@ -1,5 +1,6 @@
 package com.delicacy.cookies.service;
 
+import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
  * @author linzhenghui
  * @date 2020/6/28
  */
+@Data
 @Service
 public class TargetService {
 

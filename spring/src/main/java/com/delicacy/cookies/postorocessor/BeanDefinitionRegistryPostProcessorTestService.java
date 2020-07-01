@@ -34,6 +34,7 @@ public class BeanDefinitionRegistryPostProcessorTestService implements BeanDefin
         TargetService targetService = (TargetService)beanFactory.getBean("targetService");
         TargetService targetService2 = (TargetService)beanFactory.getBean("targetService2");
         System.out.println(targetService.equals(targetService2));
+        System.out.println(targetService == targetService2);
     }
 
 }
