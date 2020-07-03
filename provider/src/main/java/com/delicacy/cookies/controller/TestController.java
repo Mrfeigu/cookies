@@ -2,6 +2,7 @@ package com.delicacy.cookies.controller;
 
 import com.delicacy.cookies.postorocessor.BeanDefinitionRegistryPostProcessorTestService;
 import com.delicacy.cookies.service.TargetService;
+import com.delicacy.cookies.service.UserInfoService;
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,9 @@ public class TestController {
     @Resource(name = "targetService3")
     private TargetService targetService;
 
+    @Resource
+    private UserInfoService userInfoService;
+
     @GetMapping("/test")
     public Object test(String var){
         return "";
@@ -25,8 +29,10 @@ public class TestController {
 
     @GetMapping("/testTarget")
     public Object testTarget(){
+        Object o = userInfoService.sayHello();
         return targetService.printlnMsg();
     }
+
 
 }
 
