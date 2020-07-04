@@ -9,17 +9,11 @@ import org.springframework.stereotype.Service;
  * @author linzhenghui
  * @date 2020/6/28
  */
-//@Service
-public class UserInfoService implements InitializingBean {
+@Service
+public class UserInfoService  {
 
     public Object sayHello(){
         System.out.println("hello");
         return "hello";
-    }
-
-
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        System.out.println("hello");
     }
 }
