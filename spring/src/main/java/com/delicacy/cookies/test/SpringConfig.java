@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
  * @date 2020/6/28
  */
 @Configuration
-@ComponentScan("com.delicacy.cookies.factorybean")
+@ComponentScan("com.delicacy.cookies.service")
 public class SpringConfig {
 
 
