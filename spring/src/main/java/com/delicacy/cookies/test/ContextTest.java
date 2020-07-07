@@ -16,9 +16,8 @@ public class ContextTest {
 
     public static void main(String[] args){
         AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(SpringConfig.class);
-        TargetService targetService = ac.getBean(TargetService.class);
-        System.out.println(targetService.getAge());
-        System.out.println(targetService.getUserName());
+        UserInfoService targetService = ac.getBean(UserInfoService.class);
+        System.out.println(targetService.sayHello());
     }
 
 }
