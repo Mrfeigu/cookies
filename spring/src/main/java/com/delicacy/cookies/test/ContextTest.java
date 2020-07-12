@@ -1,6 +1,6 @@
-package com.delicacy.cookies.ioc.test;
+package com.delicacy.cookies.test;
 
-import com.delicacy.cookies.ioc.service.UserInfoService;
+import com.delicacy.cookies.aop.TargetService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 
@@ -14,8 +14,9 @@ public class ContextTest {
 
     public static void main(String[] args){
         AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(SpringConfig.class);
-        UserInfoService targetService = ac.getBean(UserInfoService.class);
-        System.out.println(targetService.sayHello());
+        TargetService targetService = ac.getBean(TargetService.class);
+        String why = targetService.printParam("why");
+        System.out.println(why);
     }
 
 }
