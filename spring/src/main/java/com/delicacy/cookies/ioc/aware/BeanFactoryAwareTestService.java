@@ -1,6 +1,6 @@
-package com.delicacy.cookies.aware;
+package com.delicacy.cookies.ioc.aware;
 
-import com.delicacy.cookies.service.TargetService;
+import com.delicacy.cookies.ioc.service.TargetService;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;

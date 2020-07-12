@@ -1,7 +1,7 @@
-package com.delicacy.cookies.aware;
+package com.delicacy.cookies.ioc.aware;
 
-import com.delicacy.cookies.aware.dto.UserDto;
-import com.delicacy.cookies.aware.event.UserApplicationEvent;
+import com.delicacy.cookies.ioc.aware.dto.UserDto;
+import com.delicacy.cookies.ioc.aware.event.UserApplicationEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Service;
 

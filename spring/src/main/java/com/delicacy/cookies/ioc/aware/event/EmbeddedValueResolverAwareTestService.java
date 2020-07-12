@@ -1,4 +1,4 @@
-package com.delicacy.cookies.aware.event;
+package com.delicacy.cookies.ioc.aware.event;
 
 import org.springframework.context.EmbeddedValueResolverAware;
 import org.springframework.stereotype.Service;

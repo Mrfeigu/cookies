@@ -1,8 +1,6 @@
-package com.delicacy.cookies.test;
+package com.delicacy.cookies.ioc.test;
 
-import com.delicacy.cookies.factorybean.FactoryBeanTestService;
-import com.delicacy.cookies.service.TargetService;
-import com.delicacy.cookies.service.UserInfoService;
+import com.delicacy.cookies.ioc.service.UserInfoService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 

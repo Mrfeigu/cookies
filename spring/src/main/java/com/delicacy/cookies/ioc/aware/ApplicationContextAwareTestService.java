@@ -1,4 +1,4 @@
-package com.delicacy.cookies.aware;
+package com.delicacy.cookies.ioc.aware;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

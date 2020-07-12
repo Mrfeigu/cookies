@@ -1,8 +1,7 @@
 package com.delicacy.cookies.controller;
 
-import com.delicacy.cookies.postorocessor.BeanDefinitionRegistryPostProcessorTestService;
-import com.delicacy.cookies.service.TargetService;
-import com.delicacy.cookies.service.UserInfoService;
+import com.delicacy.cookies.ioc.service.TargetService;
+import com.delicacy.cookies.ioc.service.UserInfoService;
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

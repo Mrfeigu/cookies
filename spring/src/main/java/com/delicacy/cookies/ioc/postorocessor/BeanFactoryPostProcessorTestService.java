@@ -1,6 +1,6 @@
-package com.delicacy.cookies.postorocessor;
+package com.delicacy.cookies.ioc.postorocessor;
 
-import com.delicacy.cookies.service.TargetService;
+import com.delicacy.cookies.ioc.service.TargetService;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;

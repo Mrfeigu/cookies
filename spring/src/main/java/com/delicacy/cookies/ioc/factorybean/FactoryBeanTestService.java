@@ -1,7 +1,7 @@
-package com.delicacy.cookies.factorybean;
+package com.delicacy.cookies.ioc.factorybean;
 
 
-import com.delicacy.cookies.service.UserInfoService;
+import com.delicacy.cookies.ioc.service.UserInfoService;
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.stereotype.Service;
 

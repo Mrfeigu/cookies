@@ -1,11 +1,9 @@
-package com.delicacy.cookies.postorocessor;
+package com.delicacy.cookies.ioc.postorocessor;
 
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.PropertyValues;
 import org.springframework.beans.factory.config.InstantiationAwareBeanPostProcessor;
-import org.springframework.stereotype.Service;
-
 
 
 /**

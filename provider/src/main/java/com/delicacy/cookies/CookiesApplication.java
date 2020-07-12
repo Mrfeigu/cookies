@@ -1,9 +1,8 @@
 package com.delicacy.cookies;
 
-import com.delicacy.cookies.annotation.LoaderUserService;
+import com.delicacy.cookies.ioc.annotation.LoaderUserService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
 
 @LoaderUserService
 @SpringBootApplication

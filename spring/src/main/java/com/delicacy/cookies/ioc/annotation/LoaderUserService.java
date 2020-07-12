@@ -1,6 +1,6 @@
-package com.delicacy.cookies.annotation;
+package com.delicacy.cookies.ioc.annotation;
 
-import com.delicacy.cookies.service.UserInfoService;
+import com.delicacy.cookies.ioc.service.UserInfoService;
 import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.*;

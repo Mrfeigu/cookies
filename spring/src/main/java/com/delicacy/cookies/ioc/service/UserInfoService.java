@@ -1,8 +1,7 @@
-package com.delicacy.cookies.service;
+package com.delicacy.cookies.ioc.service;
 
 
 import org.springframework.beans.factory.SmartInitializingSingleton;
-import org.springframework.beans.factory.config.InstantiationAwareBeanPostProcessor;
 import org.springframework.stereotype.Service;
 
 /**

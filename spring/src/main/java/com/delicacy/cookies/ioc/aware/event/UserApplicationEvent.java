@@ -1,7 +1,6 @@
-package com.delicacy.cookies.aware.event;
+package com.delicacy.cookies.ioc.aware.event;
 
-import com.delicacy.cookies.aware.dto.UserDto;
-import lombok.Data;
+import com.delicacy.cookies.ioc.aware.dto.UserDto;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.context.ApplicationEvent;

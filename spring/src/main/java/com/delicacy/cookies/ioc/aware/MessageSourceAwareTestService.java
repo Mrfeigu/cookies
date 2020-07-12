@@ -1,4 +1,4 @@
-package com.delicacy.cookies.aware;
+package com.delicacy.cookies.ioc.aware;
 
 import org.springframework.context.MessageSource;
 import org.springframework.context.MessageSourceAware;

@@ -1,4 +1,4 @@
-package com.delicacy.cookies.aware.dto;
+package com.delicacy.cookies.ioc.aware.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
