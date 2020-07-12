@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
  */
 
 @Service
-public class TargetService {
+public class AopTargetService {
 
     @TargetAnnotation(value = true)
     public String printParam(String var){

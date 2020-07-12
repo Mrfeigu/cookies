@@ -1,6 +1,6 @@
 package com.delicacy.cookies.test;
 
-import com.delicacy.cookies.aop.TargetService;
+import com.delicacy.cookies.aop.AopTargetService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 
@@ -14,8 +14,8 @@ public class ContextTest {
 
     public static void main(String[] args){
         AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(SpringConfig.class);
-        TargetService targetService = ac.getBean(TargetService.class);
-        String why = targetService.printParam("why");
+        AopTargetService aopTargetService = ac.getBean(AopTargetService.class);
+        String why = aopTargetService.printParam("why");
         System.out.println(why);
     }
 
