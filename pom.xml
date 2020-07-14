@@ -19,6 +19,7 @@
         <module>provider</module>
         <module>spring</module>
         <module>exercise</module>
+        <module>jdkutil</module>
     </modules>
 
     <dependencies>
