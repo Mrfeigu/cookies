@@ -1,5 +1,7 @@
 package com.lc.exercise.hard;
 
+import java.util.Stack;
+
 public class exercise2 {
 
     /**
@@ -47,10 +49,52 @@ public class exercise2 {
     }
 
 
+    /**
+     * 堆做法 boom，boom，boom(至少我是不会这样操作的)
+     * @param height
+     * @return
+     */
+    public int trap3(int[] height) {
+        int res = 0, current = 0;
+        Stack<Integer> stack = new Stack<>();
+        while(current < height.length){
+            while (!stack.isEmpty() && height[stack.peek()] < height[current]) {
+                int compare = stack.pop();
+                if(stack.isEmpty())break;
+                int distnct = current - stack.peek() - 1;
+                res += (Math.min(height[stack.peek()], height[current]) - height[compare]) * distnct;
+            }
+            stack.push(current++);
+        }
+        return res;
+    }
+
+    /**
+     * 双指针，反正就很妙
+     * @param height
+     * @return
+     */
+    public int trap4(int[] height){
+        int res = 0, left = 0, right = height.length - 1;
+        int leftMax = 0, rightMax = 0;
+        while(left < right){
+            if(height[left] < height[right]){
+                if(height[left] > leftMax) leftMax = height[left]; else res += (leftMax - height[left]);
+                left++;
+            }else{
+                if(height[right] > rightMax) rightMax = height[right]; else res += (rightMax - height[right]);
+                right--;
+            }
+        }
+        return res;
+    }
+
+
+
 
     public static void main(String[] args){
-        int[] arr = {2,0,2};
-        int trap = new exercise2().trap2(arr);
+        int[] arr = {2,1,0,2};
+        int trap = new exercise2().trap3(arr);
         System.out.println(trap);
         System.out.println("ending...");
     }
