@@ -3,17 +3,16 @@ package com.delicacy.cookies.util;
 import java.util.*;
 import java.util.function.Function;
 import java.util.function.Predicate;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 /**
+ * stream工具
  * @author linzhenghui
  * @date 2020/7/31
  */
 public class StreamUtils {
 
     /*********************************************List转换****************************************************/
-
 
     /**
      * 普通 List to List
@@ -42,18 +41,18 @@ public class StreamUtils {
      * @param <P> param
      * @return List<R>
      */
-    public static<R, P extends Comparable<? super P>> List<R> listToListSort(
+    public static <P , R, U extends Comparable<? super U>> List<R> listToListSort(
             List<P> list,
             Function<? super P, ? extends R> mapper
-            , Function<? super R, ? extends P> keyExtractor)
+            , Function<? super P, ? extends U> keyExtractor)
     {
         Objects.requireNonNull(list);
         return list
                 .stream()
                 .filter(Objects::nonNull)
+                .sorted(Comparator.comparing(keyExtractor))
                 .map(mapper)
                 .filter(Objects::nonNull)
-                .sorted(Comparator.comparing(keyExtractor))
                 .collect(Collectors.toList());
     }
 
@@ -66,18 +65,18 @@ public class StreamUtils {
      * @param <P> param
      * @return List<R>
      */
-    public static<R, P extends Comparable<? super P>> List<R> listToListSortReversed(
+    public static<R, P, U extends Comparable<? super U>> List<R> listToListSortReversed(
             List<P> list,
             Function<? super P, ? extends R> mapper
-            , Function<? super R, ? extends P> keyExtractor)
+            , Function<? super P, ? extends U> keyExtractor)
     {
         Objects.requireNonNull(list);
         return list
                 .stream()
                 .filter(Objects::nonNull)
+                .sorted(Comparator.comparing(keyExtractor).reversed())
                 .map(mapper)
                 .filter(Objects::nonNull)
-                .sorted(Comparator.comparing(keyExtractor).reversed())
                 .collect(Collectors.toList());
     }
 
@@ -197,14 +196,7 @@ public class StreamUtils {
 
     public static void main(String[] args){
 
-
-
-
-
-
-
     }
-
 
 
 }
