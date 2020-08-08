@@ -2,19 +2,24 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="provider" />
-        <module name="cookies" />
+        <module name="jdkutil" />
         <module name="spring" />
+        <module name="exercise" />
+        <module name="cookies" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="cookies" options="-parameters" />
+      <module name="exercise" options="-parameters" />
+      <module name="jdkutil" options="-parameters" />
       <module name="provider" options="-parameters" />
       <module name="spring" options="-parameters" />
     </option>
