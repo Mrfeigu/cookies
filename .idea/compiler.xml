@@ -8,9 +8,9 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="jdkutil" />
-        <module name="exercise" />
-        <module name="spring" />
         <module name="cookies" />
+        <module name="spring" />
+        <module name="exercise" />
         <module name="provider" />
       </profile>
     </annotationProcessing>
