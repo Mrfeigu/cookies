@@ -20,6 +20,7 @@
         <module>spring</module>
         <module>exercise</module>
         <module>jdkutil</module>
+        <module>rabbitmq</module>
     </modules>
 
     <dependencies>
