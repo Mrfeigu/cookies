@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
  * @date 2020/9/11
  */
 @Slf4j
-@Component
+// @Component
 public class QueueConfig {
 
     @Bean(name = "monitorReportReduceQueue")
