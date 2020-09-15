@@ -16,43 +16,49 @@ public class exercise27 {
         List<Integer> result = new LinkedList<>();
         int left = 0, right = matrix[0].length - 1, top = 0, bottom = matrix.length - 1, sum = matrix.length * matrix[0].length;
         int index = 0;
-        while(index < sum){
+        while(index < sum) {
 
-            if(top >= bottom) continue;
-            for (int i = left; i <= right; i++) {
-                result.add(matrix[top][i]);
-                index++;
+            if (top <= bottom) {
+                for (int i = left; i <= right; i++) {
+                    result.add(matrix[top][i]);
+                    index++;
+                }
+                top++;
             }
-            top++;
 
-            if(right <= left) continue;
-            for (int i = top; i <= bottom; i++) {
-                result.add(matrix[i][right]);
-                index++;
+            if (right >= left) {
+                for (int i = top; i <= bottom; i++) {
+                    result.add(matrix[i][right]);
+                    index++;
+                }
+                right--;
             }
-            right--;
 
-            if(bottom < top) continue;
-            for (int i = right; i >= left; i--) {
-                result.add(matrix[bottom][i]);
-                index++;
+            if (bottom >= top) {
+                for (int i = right; i >= left; i--) {
+                    result.add(matrix[bottom][i]);
+                    index++;
+                }
+                bottom--;
             }
-            bottom--;
 
-            if(left > right) continue;
-            for (int i = bottom; i >= top; i--) {
-                result.add(matrix[i][left]);
-                index++;
+            if (left <= right) {
+                for (int i = bottom; i >= top; i--) {
+                    result.add(matrix[i][left]);
+                    index++;
+                }
+                left++;
             }
-            left++;
+
         }
 
         return result;
     }
 
     public static void main(String[] args){
-        int [][] matrix = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
-        new exercise27().spiralOrder(matrix);
+        int [][] matrix = {{2,5,8},{4,0,-1}};
+        int [][] matrix2 = {{1,2,3,4},{5,6,7,8},{9,10,11,12}};
+        new exercise27().spiralOrder(matrix2);
     }
 
 }
