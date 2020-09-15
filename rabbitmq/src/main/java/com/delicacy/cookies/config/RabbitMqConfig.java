@@ -20,7 +20,7 @@ import static org.springframework.amqp.rabbit.connection.CachingConnectionFactor
  */
 
 @Slf4j
-@Configuration
+// @Configuration
 public class RabbitMqConfig {
 
     @Primary
