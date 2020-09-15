@@ -21,6 +21,7 @@
         <module>exercise</module>
         <module>jdkutil</module>
         <module>rabbitmq</module>
+        <module>redis</module>
     </modules>
 
     <dependencies>

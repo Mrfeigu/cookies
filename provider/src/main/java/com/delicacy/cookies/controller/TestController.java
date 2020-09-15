@@ -1,5 +1,6 @@
 package com.delicacy.cookies.controller;
 
+import com.delicacy.cookies.RedisDemo;
 import com.delicacy.cookies.ioc.service.TargetService;
 import com.delicacy.cookies.ioc.service.UserInfoService;
 import lombok.extern.slf4j.Slf4j;
@@ -24,6 +25,9 @@ public class TestController {
     @Resource
     private UserInfoService userInfoService;
 
+    @Resource
+    private RedisDemo redisDemo;
+
     @GetMapping("/test")
     public Object test(String var){
         return "";
@@ -39,6 +43,10 @@ public class TestController {
         return null;
     }
 
+    @GetMapping("/testRedis")
+    public Object testRedis(){
+        return redisDemo.test();
+    }
 
 }
 
