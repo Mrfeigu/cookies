@@ -1,12 +1,13 @@
 package com.delicacy.cookies.demo;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+
+import static com.delicacy.cookies.config.QueueConfig.*;
 
 /**
  * @author linzhenghui
@@ -38,5 +39,21 @@ public class RabbitMqDemo {
         log.info("UsingMQ#mqConsumer msg:{}", msg);
     }
 
+    /**
+     * 自生成队列
+     * @param msg
+     */
+    public void mqProduct2(String msg){
+        rabbitTemplate.convertAndSend(ORANGE_QUEUE_KEY, ORANGE_ROUTE, msg);
+    }
+
+    /**
+     * 监听
+     * @param msg
+     */
+    @RabbitListener(queues = QUEUE_NAME)
+    public void mqConsumer2(String msg){
+        System.out.println(msg);
+    }
 
 }

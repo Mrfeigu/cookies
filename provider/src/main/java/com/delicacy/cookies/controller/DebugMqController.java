@@ -21,7 +21,7 @@ public class DebugMqController {
 
     @GetMapping("debug")
     public Object debug(String msg){
-        rabbitMqDemo.mqProduct(msg);
+        rabbitMqDemo.mqProduct2(msg);
         return "success";
     }
 
