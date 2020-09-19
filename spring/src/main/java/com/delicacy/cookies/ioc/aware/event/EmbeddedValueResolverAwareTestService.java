@@ -15,7 +15,7 @@ public class EmbeddedValueResolverAwareTestService implements EmbeddedValueResol
     @Override
     public void setEmbeddedValueResolver(StringValueResolver resolver) {
         System.out.println("执行setEmbeddedValueResolver");
-        String s = resolver.resolveStringValue("你好${target.username}, 计算#{3*8}");
+        String s = resolver.resolveStringValue("你好${target.username:张三}, 计算#{3*8}");
         System.out.println(s);
     }
 
