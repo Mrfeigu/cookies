@@ -1,10 +1,10 @@
 package com.delicacy.cookies;
 
+import com.delicacy.cookies.utils.RedisUtils;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -18,15 +18,15 @@ import java.io.Serializable;
 public class RedisDemo {
 
     @Resource
-    private RedisTemplate<String, Object> redisTemplate;
+    private RedisUtils redisUtils;
 
     public Object test(){
         TestRedisDemoEntity testRedisDemoEntity = new TestRedisDemoEntity();
         testRedisDemoEntity.setUserId(1);
         testRedisDemoEntity.setAge(1);
         testRedisDemoEntity.setUserName("feigu");
-        redisTemplate.opsForValue().set("ahhh", testRedisDemoEntity);
-        return redisTemplate.opsForValue().get("ahhh");
+        redisUtils.set("ahhh", testRedisDemoEntity);
+        return redisUtils.get("ahhh");
     }
 
     @Data

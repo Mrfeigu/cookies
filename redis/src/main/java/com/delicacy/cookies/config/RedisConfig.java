@@ -9,10 +9,16 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 /**
+ * RedisTemplate
+ * RedisConnectionFactory 是默认用了 LettuceConnectionFactory 拥有一堆集群配置的高级操作
+ *
+ * StringRedisTemplate 与 RedisTemplate 的序列化方式是不一样的
+ *
  * @author linzhenghui
  * @date 2020/9/16
  */
@@ -20,7 +26,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 public class RedisConfig {
 
     @Bean
-    // @ConditionalOnMissingBean(name = "redisTemplate")
+    @ConditionalOnMissingBean(name = "redisTemplate")
     public RedisTemplate<String, Object> buildRedisTemplate(RedisConnectionFactory factory){
         RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
         // 设置工厂
@@ -42,6 +48,12 @@ public class RedisConfig {
         //
         redisTemplate.afterPropertiesSet();
         return redisTemplate;
+    }
+
+    @Bean
+    @ConditionalOnMissingBean(name = "stringRedisTemplate")
+    public StringRedisTemplate buildStringRedisTemplate(RedisConnectionFactory factory){
+        return new StringRedisTemplate(factory);
     }
 
 }
