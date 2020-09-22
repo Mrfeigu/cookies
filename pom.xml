@@ -22,6 +22,7 @@
         <module>jdkutil</module>
         <module>rabbitmq</module>
         <module>redis</module>
+        <module>guava</module>
     </modules>
 
     <dependencies>
