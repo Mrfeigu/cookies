@@ -19,7 +19,7 @@ public class BatchUtils {
      * @param action 执行方法
      * @param <T>
      */
-    private <T> void batchExecute(List<T> list, int customThreshold, Consumer<? super List<T>> action){
+    public static <T> void exe(List<T> list, int customThreshold, Consumer<? super List<T>> action){
 
         if(list == null || list.isEmpty()) {
             return;
