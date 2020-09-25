@@ -1,4 +1,4 @@
-package com.delicacy.cookies.utils;
+package com.delicacy.cookies.template;
 
 
 import java.util.List;

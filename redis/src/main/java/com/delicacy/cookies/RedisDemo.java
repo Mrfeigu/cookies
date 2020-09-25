@@ -1,6 +1,6 @@
 package com.delicacy.cookies;
 
-import com.delicacy.cookies.utils.RedisUtils;
+import com.delicacy.cookies.template.RedisUtils;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
