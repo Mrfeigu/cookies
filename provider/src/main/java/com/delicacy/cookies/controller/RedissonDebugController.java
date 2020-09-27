@@ -17,8 +17,6 @@ import javax.annotation.Resource;
 public class RedissonDebugController {
 
 
-    @Resource
-
 
     @GetMapping("/debug")
     private Object debug(){

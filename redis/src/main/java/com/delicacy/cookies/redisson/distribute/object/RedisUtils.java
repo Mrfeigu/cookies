@@ -3,10 +3,13 @@ package com.delicacy.cookies.redisson.distribute.object;
 
 import com.delicacy.cookies.RedisCommonUtils;
 import lombok.extern.slf4j.Slf4j;
+import org.redisson.api.RSet;
 import org.redisson.api.RedissonClient;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -126,88 +129,96 @@ public class RedisUtils implements RedisCommonUtils {
     }
 
     @Override
+    @Deprecated
     public double hincr(String key, String item, double by) {
-        // todo
         return 0;
     }
 
     @Override
+    @Deprecated
     public double hdecr(String key, String item, double by) {
         return 0;
     }
 
     @Override
     public Set<Object> sGet(String key) {
-        return null;
+        return redissonClient.getSet(key);
     }
 
     @Override
     public boolean sHasKey(String key, Object value) {
-        return false;
+        return redissonClient.getSet(key).contains(value);
     }
 
     @Override
     public long sSet(String key, Object... values) {
-        return 0;
+        redissonClient.getSet(key).addAll(Arrays.asList(values));
+        return 1L;
     }
 
     @Override
+    @Deprecated
     public long sSetAndTime(String key, long time, Object... values) {
-        return 0;
+        return 0L;
     }
 
     @Override
     public long sGetSetSize(String key) {
-        return 0;
+        return redissonClient.getSet(key).size();
     }
 
     @Override
     public long setRemove(String key, Object... values) {
-        return 0;
+        redissonClient.getSet(key).removeAll(Arrays.asList(values));
+        return 1L;
     }
 
     @Override
     public List<Object> lGet(String key, long start, long end) {
-        return null;
+        return redissonClient.getList(key).range((int)start, (int)end);
     }
 
     @Override
     public long lGetListSize(String key) {
-        return 0;
+        return redissonClient.getList(key).size();
     }
 
     @Override
     public Object lGetIndex(String key, long index) {
-        return null;
+        return redissonClient.getList(key).get((int)index);
     }
 
     @Override
     public boolean lSet(String key, Object value) {
-        return false;
+        return redissonClient.getList(key).add(value);
     }
 
     @Override
+    @Deprecated
     public boolean lSet(String key, Object value, long time) {
         return false;
     }
 
     @Override
     public boolean lSet(String key, List<Object> value) {
-        return false;
+        return redissonClient.getList(key).addAll(value);
     }
 
     @Override
+    @Deprecated
     public boolean lSet(String key, List<Object> value, long time) {
         return false;
     }
 
     @Override
     public boolean lUpdateIndex(String key, long index, Object value) {
-        return false;
+        redissonClient.getList(key).set((int)index, value);
+        return true;
     }
 
     @Override
     public long lRemove(String key, long count, Object value) {
-        return 0;
+        redissonClient.getList(key).remove(value, (int)count);
+        return 1L;
     }
 }
