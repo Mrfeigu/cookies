@@ -28,13 +28,6 @@ public class RedisUtils implements RedisCommonUtils {
     @Resource
     private RedissonClient redissonClient;
 
-    /**
-     * 指定缓存失效时间
-     *
-     * @param key  键
-     * @param time 时间(秒)
-     * @return
-     */
     @Override
     public boolean expire(String key, long time) {
         return redissonClient.getBucket(key).expire(time, TimeUnit.SECONDS);
@@ -73,26 +66,55 @@ public class RedisUtils implements RedisCommonUtils {
         return true;
     }
 
+    /**
+     * 要确保value是integer类型
+     * @param key   键
+     * @param delta 要增加几(大于0)
+     * @return
+     */
     @Override
     public Long incr(String key, long delta) {
         return redissonClient.getAtomicLong(key).addAndGet(delta);
     }
 
+    /**
+     * 要确保value是integer类型
+     * @param key   键
+     * @param delta 要减少几(小于0)
+     * @return
+     */
     @Override
     public Long decr(String key, long delta) {
         return redissonClient.getAtomicLong(key).addAndGet(-delta);
     }
 
+    /**
+     * 是否会有性能问题
+     * @param key  键 不能为null
+     * @param item 项 不能为null
+     * @return
+     */
     @Override
     public Object hget(String key, String item) {
         return redissonClient.getMap(key).get(item);
     }
 
+    /**
+     * 是否会用性能问题
+     * @param key 键
+     * @return
+     */
     @Override
     public Map<Object, Object> hmget(String key) {
         return redissonClient.getMap(key);
     }
 
+    /**
+     * 可以set
+     * @param key 键
+     * @param map 对应多个键值
+     * @return
+     */
     @Override
     public boolean hmset(String key, Map<String, Object> map) {
         redissonClient.getMap(key).putAll(map);
@@ -124,7 +146,7 @@ public class RedisUtils implements RedisCommonUtils {
 
     @Override
     public boolean hHasKey(String key, String item) {
-        Object o = redissonClient.getMap(key);
+        Object o = redissonClient.getMap(key).get(item);
         return o == null;
     }
 
