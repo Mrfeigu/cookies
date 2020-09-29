@@ -147,7 +147,7 @@ public class RedisUtils implements RedisCommonUtils {
     @Override
     public boolean hHasKey(String key, String item) {
         Object o = redissonClient.getMap(key).get(item);
-        return o == null;
+        return o != null;
     }
 
     @Override

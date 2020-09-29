@@ -1,9 +1,10 @@
 package com.delicacy.cookies.controller;
 
 
-import com.delicacy.cookies.RedisCommonUtils;
 import com.delicacy.cookies.entity.UserInfo;
 import com.delicacy.cookies.redisson.distribute.object.RedisUtils;
+import com.delicacy.cookies.redisson.distribute.ps.Car;
+import com.delicacy.cookies.redisson.distribute.ps.RedisPublishSubscibe;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,6 +24,9 @@ public class RedissonDebugController {
 
     @Resource(name = "redissonRedisUtils")
     private RedisUtils redisCommonUtils;
+
+    @Resource
+    private RedisPublishSubscibe redisPublishSubscibe;
 
     @GetMapping("/debug")
     private Object debug(){
@@ -103,8 +107,11 @@ public class RedissonDebugController {
         return null;
     }
 
-
-
+    @GetMapping("/debug7")
+    public Object debug7(){
+        redisPublishSubscibe.publish("topic", new Car(20000, "blue"));
+        return true;
+    }
 
 
 }
