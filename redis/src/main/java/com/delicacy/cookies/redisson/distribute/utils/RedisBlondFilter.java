@@ -1,4 +1,4 @@
-package com.delicacy.cookies.redisson.distribute.filter;
+package com.delicacy.cookies.redisson.distribute.utils;
 
 import com.delicacy.cookies.redisson.entity.Hero;
 import lombok.extern.slf4j.Slf4j;

@@ -1,10 +1,10 @@
 package com.delicacy.cookies.controller;
 
 
-import com.delicacy.cookies.RedisCommonUtils;
 import com.delicacy.cookies.entity.UserInfo;
-import com.delicacy.cookies.redisson.distribute.filter.RedisBlondFilter;
+import com.delicacy.cookies.redisson.distribute.utils.RedisBlondFilter;
 import com.delicacy.cookies.redisson.distribute.object.RedisUtils;
+import com.delicacy.cookies.redisson.distribute.utils.RedisRateLimiter;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,6 +27,9 @@ public class RedissonDebugController {
 
     @Resource
     private RedisBlondFilter redisBlondFilter;
+
+    @Resource
+    private RedisRateLimiter redisRateLimiter;
 
     @GetMapping("/debug")
     private Object debug(){
@@ -112,6 +115,9 @@ public class RedissonDebugController {
         return redisBlondFilter.filter();
     }
 
-
+    @GetMapping("/debug8")
+    private Object debug8(){
+        return redisRateLimiter.limiter();
+    }
 
 }
