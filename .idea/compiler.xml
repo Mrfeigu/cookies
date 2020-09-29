@@ -12,6 +12,8 @@
         <module name="jdkutil" />
         <module name="exercise" />
         <module name="rabbitmq" />
+        <module name="redis" />
+        <module name="guava" />
         <module name="spring" />
       </profile>
     </annotationProcessing>
@@ -20,9 +22,11 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="cookies" options="-parameters" />
       <module name="exercise" options="-parameters" />
+      <module name="guava" options="-parameters" />
       <module name="jdkutil" options="-parameters" />
       <module name="provider" options="-parameters" />
       <module name="rabbitmq" options="-parameters" />
+      <module name="redis" options="-parameters" />
       <module name="spring" options="-parameters" />
     </option>
   </component>

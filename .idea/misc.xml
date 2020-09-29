@@ -9,6 +9,7 @@
         <option value="$PROJECT_DIR$/spring/pom.xml" />
         <option value="$PROJECT_DIR$/exercise/pom.xml" />
         <option value="$PROJECT_DIR$/jdkutil/pom.xml" />
+        <option value="$PROJECT_DIR$/guava/pom.xml" />
       </list>
     </option>
   </component>
