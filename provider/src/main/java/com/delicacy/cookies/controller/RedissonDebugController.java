@@ -3,6 +3,7 @@ package com.delicacy.cookies.controller;
 
 import com.delicacy.cookies.RedisCommonUtils;
 import com.delicacy.cookies.entity.UserInfo;
+import com.delicacy.cookies.redisson.distribute.filter.RedisBlondFilter;
 import com.delicacy.cookies.redisson.distribute.object.RedisUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +24,9 @@ public class RedissonDebugController {
 
     @Resource(name = "redissonRedisUtils")
     private RedisUtils redisCommonUtils;
+
+    @Resource
+    private RedisBlondFilter redisBlondFilter;
 
     @GetMapping("/debug")
     private Object debug(){
@@ -103,7 +107,10 @@ public class RedissonDebugController {
         return null;
     }
 
-
+    @GetMapping("/debug7")
+    private Object debug7(){
+        return redisBlondFilter.filter();
+    }
 
 
 
