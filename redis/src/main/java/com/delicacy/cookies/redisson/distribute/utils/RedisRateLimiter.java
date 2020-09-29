@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.Resource;
 
 /**
- * redis 分布式限流器，底层是令牌桶算法
+ * redis 分布式限流器，底层算法是令牌桶
  * @author linzhenghui
  * @date 2020/9/29
  */
