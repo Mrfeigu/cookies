@@ -1,7 +1,5 @@
 package com.delicacy.cookies.thread;
 
-import com.sun.istack.internal.NotNull;
-
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.atomic.AtomicInteger;
 
