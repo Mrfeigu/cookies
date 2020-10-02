@@ -6,7 +6,9 @@ import com.delicacy.cookies.redisson.distribute.utils.RedisBlondFilter;
 import com.delicacy.cookies.redisson.distribute.object.RedisUtils;
 import com.delicacy.cookies.redisson.distribute.ps.Car;
 import com.delicacy.cookies.redisson.distribute.ps.RedisPublishSubscibe;
+import com.delicacy.cookies.redisson.distribute.utils.RedisCollectionMapService;
 import com.delicacy.cookies.redisson.distribute.utils.RedisRateLimiter;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,7 +20,7 @@ import java.util.*;
  * @author linzhenghui
  * @date 2020/9/11
  */
-
+@Slf4j
 @RestController
 @RequestMapping("/redisson")
 public class RedissonDebugController {
@@ -35,6 +37,9 @@ public class RedissonDebugController {
 
     @Resource
     private RedisRateLimiter redisRateLimiter;
+
+    @Resource
+    private RedisCollectionMapService redisCollectionMapService;
 
     @GetMapping("/debug")
     private Object debug(){
@@ -130,5 +135,18 @@ public class RedissonDebugController {
     private Object debug9(){
         return redisRateLimiter.limiter();
     }
+
+
+    @GetMapping("/debug10")
+    private Object debug10(){
+        String resStr = "真的不是这样";
+        try{
+            resStr = (String)redisCollectionMapService.lockDemo();
+        }catch (Exception ex){
+            log.error("redisCollectionMapService#lockDemo", ex);
+        }
+        return resStr;
+    }
+
 
 }
