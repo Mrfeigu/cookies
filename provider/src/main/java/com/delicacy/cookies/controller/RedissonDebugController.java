@@ -2,6 +2,7 @@ package com.delicacy.cookies.controller;
 
 
 import com.delicacy.cookies.entity.UserInfo;
+import com.delicacy.cookies.redisson.distribute.utils.MultiMapDemoService;
 import com.delicacy.cookies.redisson.distribute.utils.RedisBlondFilter;
 import com.delicacy.cookies.redisson.distribute.object.RedisUtils;
 import com.delicacy.cookies.redisson.distribute.ps.Car;
@@ -40,6 +41,9 @@ public class RedissonDebugController {
 
     @Resource
     private RedisCollectionMapService redisCollectionMapService;
+
+    @Resource
+    private MultiMapDemoService multiMapDemoService;
 
     @GetMapping("/debug")
     private Object debug(){
@@ -169,5 +173,19 @@ public class RedissonDebugController {
         return redisCollectionMapService.testListener();
     }
 
+    @GetMapping("/debug14")
+    private Object debug14(){
+        return multiMapDemoService.baseSetMultiMap();
+    }
+
+    @GetMapping("/debug15")
+    private Object debug15(){
+        return multiMapDemoService.baseListMultiMap();
+    }
+
+    @GetMapping("/debug16")
+    private Object debug16(){
+        return multiMapDemoService.evictionMultimap();
+    }
 
 }
