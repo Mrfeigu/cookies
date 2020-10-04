@@ -2,13 +2,10 @@ package com.delicacy.cookies.controller;
 
 
 import com.delicacy.cookies.entity.UserInfo;
-import com.delicacy.cookies.redisson.distribute.utils.MultiMapDemoService;
-import com.delicacy.cookies.redisson.distribute.utils.RedisBlondFilter;
+import com.delicacy.cookies.redisson.distribute.utils.*;
 import com.delicacy.cookies.redisson.distribute.object.RedisUtils;
 import com.delicacy.cookies.redisson.distribute.ps.Car;
 import com.delicacy.cookies.redisson.distribute.ps.RedisPublishSubscibe;
-import com.delicacy.cookies.redisson.distribute.utils.RedisCollectionMapService;
-import com.delicacy.cookies.redisson.distribute.utils.RedisRateLimiter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -44,6 +41,9 @@ public class RedissonDebugController {
 
     @Resource
     private MultiMapDemoService multiMapDemoService;
+
+    @Resource
+    private SetDemoService setDemoService;
 
     @GetMapping("/debug")
     private Object debug(){
@@ -186,6 +186,21 @@ public class RedissonDebugController {
     @GetMapping("/debug16")
     private Object debug16(){
         return multiMapDemoService.evictionMultimap();
+    }
+
+    @GetMapping("/debug17")
+    private Object debug17(){
+        return setDemoService.sortedSetDemo();
+    }
+
+    @GetMapping("/debug18")
+    private Object debug18(){
+        return setDemoService.scoredSortedSetDemo();
+    }
+
+    @GetMapping("/debug19")
+    private Object debug19(){
+        return setDemoService.rLexSortedSetDemo();
     }
 
 }
