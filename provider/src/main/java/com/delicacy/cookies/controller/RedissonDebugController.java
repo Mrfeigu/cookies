@@ -148,5 +148,26 @@ public class RedissonDebugController {
         return resStr;
     }
 
+    @GetMapping("/debug11")
+    private Object debug11(){
+        String resStr = "真的不是这样";
+        try{
+            resStr = (String)redisCollectionMapService.elementEliminate();
+        }catch (Exception ex){
+            log.error("redisCollectionMapService#lockDemo", ex);
+        }
+        return resStr;
+    }
+
+    @GetMapping("/debug12")
+    private Object debug12(){
+        return redisCollectionMapService.localCacheMap();
+    }
+
+    @GetMapping("/debug13")
+    private Object debug13(){
+        return redisCollectionMapService.testListener();
+    }
+
 
 }
