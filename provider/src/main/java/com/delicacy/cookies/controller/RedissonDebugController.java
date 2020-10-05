@@ -45,6 +45,9 @@ public class RedissonDebugController {
     @Resource
     private SetDemoService setDemoService;
 
+    @Resource
+    private RedisQueueDemoService redisQueueDemoService;
+
     @GetMapping("/debug")
     private Object debug(){
         redisCommonUtils.set("kabagui", "wdnmd", 10000);
@@ -202,5 +205,51 @@ public class RedissonDebugController {
     private Object debug19(){
         return setDemoService.rLexSortedSetDemo();
     }
+
+    @GetMapping("/debug20")
+    private Object debug20(){
+        return redisQueueDemoService.dequeDemo();
+    }
+
+    @GetMapping("/debug21")
+    private Object debug21() throws InterruptedException {
+        return redisQueueDemoService.blockingQueueDemo();
+    }
+
+    @GetMapping("/debug22")
+    private Object debug22() throws InterruptedException {
+        return redisQueueDemoService.boundedBlockingQueueDemo();
+    }
+
+    @GetMapping("/debug23")
+    private Object debug23() throws InterruptedException {
+        return redisQueueDemoService.blockingDequeDemo();
+    }
+
+    @GetMapping("/debug24")
+    private Object debug24() throws InterruptedException {
+        return redisQueueDemoService.delayedQueueDemo();
+    }
+
+    @GetMapping("/debug25")
+    private Object debug25() throws InterruptedException {
+        return redisQueueDemoService.priorityQequeDemo();
+    }
+
+    @GetMapping("/debug26")
+    private Object debug26() throws InterruptedException {
+        return redisQueueDemoService.priorityDequeDemo();
+    }
+
+    @GetMapping("/debug27")
+    private Object debug27() throws InterruptedException {
+        return redisQueueDemoService.priorityBlockingQueueDemo();
+    }
+
+    @GetMapping("/debug28")
+    private Object debug28() throws InterruptedException {
+        return redisQueueDemoService.priorityBlockingDequeDemo();
+    }
+
 
 }
