@@ -1,4 +1,4 @@
-package com.delicacy.cookies.thread;
+package com.delicacy.cookies.thread.pool;
 
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -23,3 +23,4 @@ public class NameThreadFactory implements ThreadFactory {
     }
 
 }
+
