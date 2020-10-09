@@ -1,8 +1,9 @@
 package com.delicacy.cookies.testdemo;
 
-import com.delicacy.cookies.thread.NameThreadFactory;
+import com.delicacy.cookies.thread.pool.ThreadPoolService;
 import com.delicacy.cookies.util.BatchUtils;
 
+import javax.annotation.Resource;
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
@@ -18,16 +19,8 @@ import java.util.concurrent.TimeUnit;
  */
 public class CurrentTestBatchUtilsDemo {
 
-    /**
-     * 随缘线程池
-     */
-    public static ExecutorService executorService = new ThreadPoolExecutor(4,
-            4,
-            0,
-            TimeUnit.SECONDS,
-            new LinkedBlockingQueue<Runnable>(1000),
-            new NameThreadFactory("cookies-test"),
-            new ThreadPoolExecutor.DiscardPolicy());
+
+    static ThreadPoolService threadPoolService = new ThreadPoolService();
 
     public static void main(String[] args) throws InterruptedException {
 
@@ -35,7 +28,7 @@ public class CurrentTestBatchUtilsDemo {
 
         for (int i = 0; i < 100; i++) {
 
-            executorService.submit(() -> {
+            threadPoolService.execute(() -> {
                 sum.addAll(testDemo());
             });
 
