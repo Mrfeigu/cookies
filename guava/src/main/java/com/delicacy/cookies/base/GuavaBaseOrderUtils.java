@@ -9,11 +9,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Comparator;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
- * todo
  * https://www.cnblogs.com/houzheng/p/10903403.html
  * http://ifeve.com/google-guava-ordering/
  * 链式排序器
@@ -37,7 +35,7 @@ public class GuavaBaseOrderUtils implements Comparable<GuavaBaseOrderUtils.Perso
     @NoArgsConstructor
     @AllArgsConstructor
     public static class Person {
-        private int age;
+        private Integer age;
         private String name;
     }
 
@@ -64,25 +62,28 @@ public class GuavaBaseOrderUtils implements Comparable<GuavaBaseOrderUtils.Perso
     /**
      * 排序器比较器排序
      */
-    public static void ComparingOrdering(){
-        //对可排序类型做自然排序，如数字按大小，日期按先后排序
+    public static void comparingOrdering(){
         Ordering<Person> natural = Ordering.from(Comparator.comparing(Person::getAge)).reverse();
         List<Person> people = personList();
         people.sort(natural);
     }
 
+    /**
+     * 排序器，判断null值
+     */
+    public static void comparingNull(){
+        Ordering<Person> natural = Ordering.from(Comparator.comparing(Person::getAge)).nullsFirst().reverse();
+        List<Person> people = personList();
+        people.sort(natural);
+    }
 
     public static List<Person> personList(){
         Person person1 = new Person(1, "张三");
         Person person2 = new Person(2, "李四");
         Person person3 = new Person(3, "王五");
         Person person4 = new Person(6, "赵六");
-        LinkedList<Person> people = Lists.newLinkedList();
-        people.add(person1);
-        people.add(person2);
-        people.add(person3);
-        people.add(person4);
-        return people;
+        Person person5 = new Person(null, "田七");
+        return Lists.newArrayList(person1, person2, person3, person4, person5);
     }
 
     public static void main(String[] args) {
