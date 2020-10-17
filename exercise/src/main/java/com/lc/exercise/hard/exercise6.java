@@ -16,7 +16,7 @@ import java.util.LinkedList;
  * 3：循环
  * 4：整合
  *
- * 官方：贪心算法 insert2
+ * 官方：贪心算法 insert2 gan
  * 从局部推广到全部
  *
  *
