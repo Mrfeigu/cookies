@@ -6,6 +6,7 @@ import com.google.common.primitives.Ints;
 import java.util.*;
 
 /**
+ * http://ifeve.com/google-guava-collectionutilities/
  * guava提供的一些工具
  *
  * @author linzhenghui
