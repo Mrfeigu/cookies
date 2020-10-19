@@ -6,7 +6,7 @@
 		<groupId>org.delicacy.cookies</groupId>
 		<artifactId>cookies</artifactId>
 		<version>1.0-SNAPSHOT</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<!-- <relativePath/>  lookup parent from repository -->
 	</parent>
 	<groupId>com.delicacy</groupId>
 	<artifactId>jdkutil</artifactId>
