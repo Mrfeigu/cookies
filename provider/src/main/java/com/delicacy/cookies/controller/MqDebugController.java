@@ -14,7 +14,7 @@ import javax.annotation.Resource;
 
 @RestController
 @RequestMapping("/debug")
-public class DebugMqController {
+public class MqDebugController {
 
     @Resource
     RabbitMqDemo rabbitMqDemo;

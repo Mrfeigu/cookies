@@ -12,7 +12,7 @@ import javax.annotation.Resource;
 @Slf4j
 @RestController
 @RequestMapping("/task")
-public class TaskController {
+public class TaskDebugController {
 
     @Resource
     private Schedule schedule;
