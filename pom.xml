@@ -25,6 +25,7 @@
         <module>rabbitmq</module>
         <module>redis</module>
         <module>guava</module>
+        <module>design-mode</module>
     </modules>
 
     <dependencies>
