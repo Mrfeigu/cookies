@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.text.SimpleDateFormat;
 import java.util.ServiceLoader;
 
 /**
@@ -16,6 +17,8 @@ import java.util.ServiceLoader;
 @RestController
 @RequestMapping("/SpiDebug")
 public class SpiDebugController {
+
+    private static final ThreadLocal<SimpleDateFormat> DATE_FORMATTER = ThreadLocal.withInitial(() -> new SimpleDateFormat("yyyy-MM-dd"));
 
     @GetMapping("/test")
     public Object test(){
