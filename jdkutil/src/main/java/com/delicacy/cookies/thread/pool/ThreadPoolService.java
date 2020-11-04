@@ -18,6 +18,9 @@ public class ThreadPoolService {
     {
 
         /**
+         * keepAliveTime：线程空闲的销毁时间
+         *
+         *
          * 拒绝策略：
          * DiscardPolicy 直接丢弃
          * DiscardOldestPolicy 丢弃队列中最老的任务
@@ -32,6 +35,12 @@ public class ThreadPoolService {
                 new NameThreadFactory("cookies"),
                 new ThreadPoolExecutor.DiscardPolicy());
 
+        Runtime.getRuntime().addShutdownHook(new Thread(this::shutdown));
+
+    }
+
+    private void shutdown() {
+        threadPoolExecutor.shutdown();
     }
 
     public void execute(Runnable task) {
