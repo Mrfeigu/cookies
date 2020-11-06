@@ -1,9 +1,9 @@
 package com.delicacy.cookies.strategy;
 
-import com.delicacy.cookies.strategy.now.GameManager;
+import com.delicacy.cookies.strategy.old.OldGameManager;
+import com.delicacy.cookies.strategy.old.handler.GameHandler;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.annotation.Resource;
 
 /**
  * @author feigu
@@ -12,11 +12,14 @@ import javax.annotation.Resource;
 @Service("testGame")
 public class test {
 
-    @Resource
-    private GameManager gameManager;
+    @Autowired
+    private OldGameManager oldGameManager;
 
     public Object test(int type){
-        gameManager.exe(type);
+        GameHandler gameTypeHandler = oldGameManager.getGameTypeHandler(type);
+        if(gameTypeHandler != null){
+            gameTypeHandler.execute();
+        }
         return type;
     }
 
