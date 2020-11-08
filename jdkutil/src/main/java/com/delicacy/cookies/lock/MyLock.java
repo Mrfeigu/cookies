@@ -9,6 +9,11 @@ import java.util.concurrent.locks.LockSupport;
 /**
  * todo 自闭锁，淦，要修改
  *
+ * 遇到的问题
+ * 1:锁不会释放，原因是cas时候没有将状态改变
+ * 2:发现大概率的死锁的情况
+ *
+ *
  * 自定义锁，不可重入
  *
  *
@@ -33,7 +38,7 @@ public class MyLock {
      * 0 表示无锁
      * 1 表示已锁
      */
-    private volatile int state = 0;
+    private int state = 0;
 
     /**
      * 持有当前线程
@@ -71,7 +76,7 @@ public class MyLock {
     private boolean stateCas(int origin, int expect) throws NoSuchFieldException {
         Field field = this.getClass().getDeclaredField("state");
         long offset = unsafe.objectFieldOffset(field);
-        return unsafe.compareAndSwapInt(MyLock.class, offset, origin, expect);
+        return unsafe.compareAndSwapInt(this, offset, origin, expect);
     }
 
     /**
@@ -83,11 +88,8 @@ public class MyLock {
      */
     private boolean acquire() throws NoSuchFieldException {
         Thread currentThread = Thread.currentThread();
-        queue.add(currentThread);
         if(queue.isEmpty() || queue.peek().equals(currentThread)){
             if(state == UN_LOCK_STATE && stateCas(UN_LOCK_STATE, LOCK_STATE)){
-                currentThreadHolder = currentThread;
-                queue.poll();
                 return true;
             }
         }
@@ -100,10 +102,33 @@ public class MyLock {
      * @return
      */
     public void lock() throws NoSuchFieldException {
+
+        Thread currentThread = Thread.currentThread();
+
+        // 预先尝试获取
+        if(acquire()){
+            // 设置线程持有为当前线程
+            currentThreadHolder = currentThread;
+            return;
+        }
+
+        // 入队，保证只入队一次
+        queue.add(currentThread);
+
+
         for(;;){
+
             if(acquire()){
+                // 设置线程持有为当前线程
+                currentThreadHolder = currentThread;
+
+                // 如果队列不为null，移除唤醒节点
+                if(!queue.isEmpty() && queue.peek().equals(currentThread)){
+                    queue.poll();
+                }
                 return;
             }
+
             LockSupport.park();
         }
     }
