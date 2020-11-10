@@ -26,6 +26,10 @@ import java.util.concurrent.locks.LockSupport;
  * 1: 方法上加上final保证不被重写， 而且可能够给调用带来内联，提高效率
  * 2：加上tryLock方法，能够保证超时获取锁失败
  * <p>
+ * 不足的地方：
+ * 1: 里面用到了一个并发队列，其实可以用原生链表去实现，但是要保证并发问题，这一块是个难题
+ * 2：锁实现相对比较粗糙，没有相对完善条件信号量机制
+ * <p>
  * 参考：
  * final关键字的含义: https://zhuanlan.zhihu.com/p/60889552
  * unsafe使用: https://tech.meituan.com/2019/02/14/talk-about-java-magic-class-unsafe.html
@@ -151,9 +155,14 @@ public class MyLock {
     }
 
 
+    /**
+     * 加入尝试时间
+     *
+     * @param time
+     * @param unit
+     * @return
+     */
     public final boolean tryLock(long time, TimeUnit unit) {
-
-        // todo
 
         // 预先尝试获取
         if (acquire()) {
@@ -177,21 +186,15 @@ public class MyLock {
                 return true;
             }
 
-            if(System.nanoTime() > deadLine){
+            if (System.nanoTime() > deadLine) {
+                queue.remove(currentThread);
                 return false;
             }
 
             LockSupport.parkNanos(delayTime);
         }
 
-
-
-
-
     }
-
-
-
 
 
     /**
