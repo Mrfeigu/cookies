@@ -6,7 +6,11 @@ import java.io.IOException;
 
 /**
  * java 字节码增强工具
- * 能create，还可以modify，delete吗？
+ * 字节码工具无敌存在
+ *
+ * 能create，modify
+ * 能修改动态，静态方法与变量
+ *
  * 可以通过反射去获取
  *
  * 参考：
@@ -68,16 +72,8 @@ public class JavassistUtil {
 
     }
 
-    public static void main(String[] args) {
-        try {
-            createPerson();
-        } catch (NotFoundException e) {
-            e.printStackTrace();
-        } catch (CannotCompileException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public static void main(String[] args) throws IOException, CannotCompileException, NotFoundException {
+        createPerson();
     }
 
 
