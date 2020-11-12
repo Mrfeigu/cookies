@@ -123,19 +123,39 @@ public class JavassistUtil {
 
         CtClass cc = pool.get("com.delicacy.cookies.javassistutil.entity.DemoService");
 
+        // delete
         CtMethod ctMethod = cc.getDeclaredMethod("delete");
         cc.removeMethod(ctMethod);
-        // todo
 
+        // modify
+        CtMethod ctMethod1 = cc.getDeclaredMethod("print");
+        ctMethod1.insertBefore("System.out.println(\"起飞之前准备降落伞\");");
+        ctMethod1.insertAfter("System.out.println(\"成功落地。。。。\");");
+
+        // add
+        CtMethod ctMethod3 = new CtMethod(CtClass.intType, "joinFriend", new CtClass[]{}, cc);
+        ctMethod3.setModifiers(Modifier.PUBLIC);
+        ctMethod3.setBody("{System.out.println(\"i want to be your friend\"); return 1;}");
+        cc.addMethod(ctMethod3);
+
+        // show
+        cc.writeFile("C:\\Users\\Administrator\\IdeaProjects\\cookies\\jdkutil\\target\\classes");
+        Object demoService = cc.toClass().newInstance();
+        Method print = demoService.getClass().getMethod("print");
+        print.invoke(demoService);
+
+        Method joinFriend = demoService.getClass().getMethod("joinFriend");
+        System.out.println((int)joinFriend.invoke(demoService));
 
     }
 
 
 
     public static void main(String[] args) throws Exception {
-        CtClass cc = createPerson();
+        // CtClass cc = createPerson();
         // reflectLoad(cc);
-        interfaceLoad();
+        // interfaceLoad();
+        // modifyExist();
     }
 
 
