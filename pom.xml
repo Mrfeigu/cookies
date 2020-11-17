@@ -27,6 +27,7 @@
         <module>guava</module>
         <module>design-mode</module>
         <module>zookeeper</module>
+        <module>netty</module>
     </modules>
 
     <dependencies>
