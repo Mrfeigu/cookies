@@ -32,6 +32,13 @@
 
     <dependencies>
 
+        <!-- https://mvnrepository.com/artifact/io.netty/netty-all -->
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+            <version>4.1.54.Final</version>
+        </dependency>
+
         <!--zookeeper工具包-->
         <dependency>
             <groupId>org.apache.curator</groupId>
