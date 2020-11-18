@@ -3,6 +3,9 @@ package com.delicacy.cookies.chat.origin.client;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 
+/**
+ * 参考
+ */
 public class ClientHandler extends ChannelInboundHandlerAdapter {
 
     private ChannelHandlerContext ctx;

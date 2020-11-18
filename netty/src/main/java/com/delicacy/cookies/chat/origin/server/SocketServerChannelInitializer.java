@@ -23,6 +23,7 @@ public class SocketServerChannelInitializer extends ChannelInitializer<SocketCha
 
         ChannelPipeline pipeline = ch.pipeline();
         pipeline.addLast(new DelimiterBasedFrameDecoder(4096, Delimiters.lineDelimiter()));
+        pipeline.addLast();
         pipeline.addLast(new StringDecoder(CharsetUtil.UTF_8));
         pipeline.addLast(new StringEncoder(CharsetUtil.UTF_8));
         // todo 增加自己的业务Handler

@@ -20,8 +20,6 @@ public class ChatClientInitializer extends ChannelInitializer<SocketChannel> {
         ch.pipeline().addLast(new DelimiterBasedFrameDecoder(4096, Delimiters.lineDelimiter()))
                 .addLast(new StringDecoder(CharsetUtil.UTF_8))
                 .addLast(new StringEncoder(CharsetUtil.UTF_8))
-                // todo 添加自己的Handler, 没有workGroup，根本不会监听
-                .addLast(new ClientBizHandler())
-                .addLast(new ClientHandler());
+                .addLast(new ClientBizHandler());
     }
 }
