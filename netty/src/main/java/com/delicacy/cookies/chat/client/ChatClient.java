@@ -1,4 +1,4 @@
-package com.delicacy.cookies.chat.origin.client;
+package com.delicacy.cookies.chat.client;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
