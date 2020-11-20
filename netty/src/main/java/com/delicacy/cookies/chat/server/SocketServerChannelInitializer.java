@@ -1,5 +1,6 @@
 package com.delicacy.cookies.chat.server;
 
+import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;
@@ -27,6 +28,7 @@ public class SocketServerChannelInitializer extends ChannelInitializer<SocketCha
         pipeline.addLast(new StringDecoder(CharsetUtil.UTF_8));
         pipeline.addLast(new StringEncoder(CharsetUtil.UTF_8));
         // todo 增加自己的业务Handler
+        pipeline.addLast(new MyChatServerHandler2());
         pipeline.addLast(new BizHandler());
 
     }
