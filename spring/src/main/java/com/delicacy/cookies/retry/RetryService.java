@@ -6,6 +6,10 @@ import org.springframework.retry.annotation.Retryable;
 import org.springframework.stereotype.Service;
 
 /**
+ * 注解@Retryable源码解析
+ * https://blog.csdn.net/u010597819/article/details/108566423
+ *
+ *
  * @author linzhenghui
  * @date 2020/11/24
  */
