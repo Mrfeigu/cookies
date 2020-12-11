@@ -6,42 +6,64 @@ package com.lc.exercise.sort;
  */
 public class HeapSort {
 
-    public static void heapSort(int[] arr) {
-
-    }
 
     /**
      * left = top * 2 + 1;
      * right = top * 2 + 2;
-     *
+     * <p>
      * top = (left - 1) / 2; left 是奇数
      * top = (right - 2) / 2; right 是偶数
      *
      * @param arr
-     * @param begin
      */
-    public static void maxHeap(int[] arr, int begin) {
-        int swap = 0;
-        for (int i = arr.length - 1; i > begin; i--) {
-            // 交换
-            if(i % 2 == 1  && (i - 1) /2 >= begin && arr[(i - 1) / 2] < arr[i]) {
-                swap = arr[(i - 1) / 2]; arr[(i - 1) / 2] = arr[i]; arr[i] = swap;
+    public static void dui(int arr[]) {
+        int len = arr.length - 1;
+        for (int i = len; i > 0; i--) {
+            //数组总长度/2-1可以获取到最后一个非叶子节点,这个是根据二叉树的N0 = N2 + 1;得来的
+            for (int a = (i + 1) / 2 - 1; a >= 0; a--) {
+
+                //求出堆中最大值，并浮上堆顶
+                int length = i + 1;
+                int left = -1;
+                int right = -1;
+
+                if (a * 2 + 1 < length) {
+                    left = a * 2 + 1;
+                }
+                if (a * 2 + 2 < length) {
+                    right = a * 2 + 2;
+                }
+
+                int swapR = arr[a];
+                if (left != -1) {
+                    if (arr[a] < arr[left]) {
+                        arr[a] = arr[left];
+                        arr[left] = swapR;
+                        swapR = arr[a];
+                    }
+                }
+                if (right != -1) {
+                    if (arr[a] < arr[right]) {
+                        arr[a] = arr[right];
+                        arr[right] = swapR;
+                    }
+                }
             }
-            if(i % 2 == 0 && (i - 2) /2 >= begin && arr[(i - 2) /2] < arr[i]) {
-                swap = arr[(i - 1) / 2]; arr[(i - 1) / 2] = arr[i]; arr[i] = swap;
-            }
+
+            int swap = arr[0];
+            arr[0] = arr[i];
+            arr[i] = swap;
         }
     }
 
     public static void main(String[] args) {
 
-        int[] arr = {1,2,3,4,5,6,7};
-        maxHeap(arr, 1);
+        int[] arr = {1, 5, 4, 2, 3, 7, 6};
+        dui(arr);
         System.out.println("ending...");
 
+
     }
-
-
 
 
 }
