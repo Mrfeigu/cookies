@@ -12,9 +12,9 @@ public class TestImport {
 
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext("com.delicacy.cookies.myImport");
         ImportDemo importDemo = (ImportDemo)context.getBean(ImportDemo.class);
-        ColaImportService colaImportService = (ColaImportService)context.getBean(ColaImportService.class);
-        String colaName = colaImportService.getColaName();
-        Integer colaType = colaImportService.getColaType();
+        ColaImportService2 colaImportService2 = (ColaImportService2)context.getBean(ColaImportService2.class);
+        String colaName = colaImportService2.getColaName();
+        Integer colaType = colaImportService2.getColaType();
         System.out.println("colaName:" + colaName + " colaType:" + colaType);
         System.out.println("ending...");
 

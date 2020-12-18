@@ -12,6 +12,7 @@ import org.springframework.core.type.AnnotationMetadata;
 import org.springframework.stereotype.Service;
 
 /**
+ * ImportBeanDefinitionRegistrar配合着@Import注解使用
  * @author linzhenghui
  * @date 2020/12/16
  */
