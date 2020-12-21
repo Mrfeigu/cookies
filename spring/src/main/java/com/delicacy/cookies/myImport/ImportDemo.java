@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
  * @date 2020/12/16
  */
 @Service
-@Import({ColaImportService2.class} )
+@Import({ColaImportService3.class} )
 public class ImportDemo {
 
     private String importDemoName;
