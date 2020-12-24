@@ -19,7 +19,10 @@ public class ProxyFactory implements InvocationHandler {
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        System.out.println("ProxyFactory#invoke: " + method.getName());
+        if("sayHi".equals(method.getName())) {
+            System.out.println("ProxyFactory#invoke: " + method.getName());
+            return method.invoke(object, args);
+        }
         return method.invoke(object, args);
     }
 

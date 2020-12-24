@@ -14,4 +14,9 @@ public class ProxyTargetServiceImpl implements ProxyTargetService {
         System.out.println("hi");
     }
 
+    @Override
+    public void sayHello() {
+        System.out.println("hello");
+    }
+
 }

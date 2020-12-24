@@ -15,6 +15,7 @@ public class Demo {
         ProxyTargetService bean = ac.getBean(ProxyTargetService.class);
 
         bean.sayHi();
+        bean.sayHello();
 
     }
 

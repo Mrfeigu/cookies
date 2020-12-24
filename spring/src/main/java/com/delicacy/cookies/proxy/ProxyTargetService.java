@@ -8,5 +8,7 @@ public interface ProxyTargetService {
 
     void sayHi();
 
+    void sayHello();
+
 
 }
