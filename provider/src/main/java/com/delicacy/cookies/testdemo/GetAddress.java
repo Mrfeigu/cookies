@@ -3,6 +3,7 @@ package com.delicacy.cookies.testdemo;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.sun.javafx.binding.StringFormatter;
+import javafx.util.Pair;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.apache.poi.hssf.usermodel.HSSFRow;
@@ -35,15 +36,15 @@ public class GetAddress {
 
         List<String> strings = importXLS();
 
-        Map<String, String> map = new HashMap<>();
+        Map<String, List<String>> map = new HashMap<>();
 
         strings.forEach(o->{
-            String add = getAdd(restTemplate, o);
-            map.put(o, add);
+            Pair<String, List<String>> add = getAdd(restTemplate, o);
+            map.put(o, add.getValue());
         });
         List<Dto> dtos = new ArrayList<>();
         int index = 1;
-        for (Map.Entry<String, String> stringStringEntry : map.entrySet()) {
+        for (Map.Entry<String, List<String>> stringStringEntry : map.entrySet()) {
             Dto dto = new Dto(index++, stringStringEntry.getKey(), stringStringEntry.getValue());
             dtos.add(dto);
         }
@@ -72,17 +73,25 @@ public class GetAddress {
      * @param name
      * @return
      */
-    public static String getAdd(RestTemplate restTemplate, String name) {
+    public static Pair<String, List<String>> getAdd(RestTemplate restTemplate, String name) {
         try {
+
+            List<String> resList = new ArrayList<>();
+
             String format = String.format("https://sp0.tianyancha.com/search/suggestV2.json?key=%s&_=1609149816157", name);
             JSONObject jsonObject = restTemplate.getForObject(format, JSONObject.class);
             JSONArray data = jsonObject.getJSONArray("data");
-            JSONObject jsonObject1 = data.getJSONObject(0);
-            JSONObject sourceFields = jsonObject1.getJSONObject("sourceFields");
-            String reg_location = sourceFields.getString("reg_location");
-            return reg_location;
+            // JSONObject jsonObject1 = data.getJSONObject(0);
+
+            for (int i = 0; i < data.size(); i++) {
+                JSONObject jsonObject2 = data.getJSONObject(i);
+                JSONObject sourceFields = jsonObject2.getJSONObject("sourceFields");
+                String reg_location = sourceFields.getString("reg_location");
+                resList.add(reg_location);
+            }
+            return new Pair<>(name, resList);
         } catch (Exception ex) {
-            return null;
+            return new Pair<>(name, new ArrayList<>());
         }
     }
 
@@ -96,7 +105,7 @@ public class GetAddress {
 
         try {
             //1、获取文件输入流
-            InputStream inputStream = new FileInputStream("C:\\Users\\linzhenghui\\Desktop\\蓝畅已知债权人通信地址.xlsx");
+            InputStream inputStream = new FileInputStream("C:\\Users\\Administrator\\Desktop\\蓝畅已知债权人通信地址.xlsx");
             //2、获取Excel工作簿对象
             XSSFWorkbook workbook = new XSSFWorkbook(inputStream);
             //3、得到Excel工作表对象
@@ -108,7 +117,8 @@ public class GetAddress {
                     continue;
                 }
                 String name = row.getCell(1).getStringCellValue();
-                list.add(name);
+                String substring = name.substring(5);
+                list.add(substring);
             }
             // 5、关闭流
             workbook.close();
@@ -140,13 +150,17 @@ public class GetAddress {
             XSSFRow dataRow = sheet.createRow(lastRowNum + 1);
 
             dataRow.createCell(0).setCellValue(dto.getK());
-            dataRow.createCell(1).setCellValue(dto.getV());
+
+            List<String> v = dto.getV();
+            for (int i = 0; i < v.size(); i++) {
+                dataRow.createCell(1 + i).setCellValue(v.get(i));
+            }
 
         }
         // 5.创建文件名
         String fileName = "嘿.xls";
         // 6.获取输出流对象
-        File file = new File("C:\\Users\\linzhenghui\\Desktop\\嘿.xlsx");
+        File file = new File("C:\\Users\\Administrator\\Desktop\\嘿.xlsx");
         FileOutputStream stream = new FileOutputStream(file);
         // 7. 关闭
         hssfWorkbook.write(stream);
@@ -160,7 +174,7 @@ public class GetAddress {
 
         private Integer index;
         private String k;
-        private String v;
+        private List<String> v;
 
     }
 
