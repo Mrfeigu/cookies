@@ -18,6 +18,7 @@
         <module name="rabbitmq" />
         <module name="guava" />
         <module name="spring" />
+        <module name="eureka-cli" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -28,6 +29,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="cookies" options="-parameters" />
       <module name="design-mode" options="-parameters" />
+      <module name="eureka-cli" options="-parameters" />
       <module name="eureka-client" options="-parameters" />
       <module name="eureka-server" options="-parameters" />
       <module name="exercise" options="-parameters" />
