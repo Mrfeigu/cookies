@@ -7,27 +7,38 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="cookies" />
+        <module name="redis" />
+        <module name="zookeeper" />
+        <module name="eureka-server" />
+        <module name="netty" />
         <module name="provider" />
         <module name="jdkutil" />
         <module name="exercise" />
+        <module name="design-mode" />
         <module name="rabbitmq" />
-        <module name="redis" />
         <module name="guava" />
         <module name="spring" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="eureka-client" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="cookies" options="-parameters" />
+      <module name="design-mode" options="-parameters" />
+      <module name="eureka-client" options="-parameters" />
+      <module name="eureka-server" options="-parameters" />
       <module name="exercise" options="-parameters" />
       <module name="guava" options="-parameters" />
       <module name="jdkutil" options="-parameters" />
+      <module name="netty" options="-parameters" />
       <module name="provider" options="-parameters" />
       <module name="rabbitmq" options="-parameters" />
       <module name="redis" options="-parameters" />
       <module name="spring" options="-parameters" />
+      <module name="zookeeper" options="-parameters" />
     </option>
   </component>
 </project>
