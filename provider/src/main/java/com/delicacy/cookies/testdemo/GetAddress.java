@@ -2,8 +2,6 @@ package com.delicacy.cookies.testdemo;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.sun.javafx.binding.StringFormatter;
-import javafx.util.Pair;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.apache.poi.hssf.usermodel.HSSFRow;
@@ -28,8 +26,10 @@ import java.util.*;
  * @author linzhenghui
  * @date 2020/12/28
  */
-public class GetAddress {
 
+
+public class GetAddress {
+/**
     public static void main(String[] args) {
 
         RestTemplate restTemplate = new RestTemplate();
@@ -72,7 +72,7 @@ public class GetAddress {
      * @param restTemplate
      * @param name
      * @return
-     */
+
     public static Pair<String, List<String>> getAdd(RestTemplate restTemplate, String name) {
         try {
 
@@ -98,7 +98,7 @@ public class GetAddress {
     /**
      * 导入
      * @return
-     */
+
     public static List<String> importXLS() {
 
         List<String> list = new ArrayList<>();
@@ -132,7 +132,7 @@ public class GetAddress {
      * 导出
      * @param list
      * @throws IOException
-     */
+
     public static void exportExcel(List<Dto> list) throws IOException {
 
         // List<Dto> list = new ArrayList<>();
@@ -177,6 +177,6 @@ public class GetAddress {
         private List<String> v;
 
     }
-
+ */
 
 }
