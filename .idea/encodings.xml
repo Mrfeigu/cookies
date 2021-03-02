@@ -4,9 +4,11 @@
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/design-mode/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/eureka-cli/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/eureka-cli2/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/eureka-server/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/exercise" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/exercise/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/feign-client/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/guava" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/guava/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/jdkutil" charset="UTF-8" />

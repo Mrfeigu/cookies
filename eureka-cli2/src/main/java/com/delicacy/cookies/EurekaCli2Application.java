@@ -3,21 +3,16 @@ package com.delicacy.cookies;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 
-/**
- * @author linzhenghui
- * @date 2021/01/19
- */
-@EnableFeignClients
 @EnableDiscoveryClient
 @SpringBootApplication
-public class EurekaCliApplication {
+@EnableFeignClients(basePackages = "com.delicacy.feignclient")
+public class EurekaCli2Application  {
 
     public static void main(String[] args) {
-        SpringApplication.run(EurekaCliApplication.class, args);
+        SpringApplication.run(EurekaCli2Application.class, args);
     }
 
 }
