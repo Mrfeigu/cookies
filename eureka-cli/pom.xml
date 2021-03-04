@@ -22,6 +22,11 @@
     <dependencies>
 
         <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>com.delicacy</groupId>
             <artifactId>feign-client</artifactId>
             <version>0.0.1-SNAPSHOT</version>

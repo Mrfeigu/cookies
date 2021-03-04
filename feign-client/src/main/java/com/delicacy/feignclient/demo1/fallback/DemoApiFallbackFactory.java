@@ -1,7 +1,7 @@
 package com.delicacy.feignclient.demo1.fallback;
 
 import com.delicacy.feignclient.demo1.DemoApi;
-import feign.hystrix.FallbackFactory;
+import org.springframework.cloud.openfeign.FallbackFactory;
 import org.springframework.stereotype.Component;
 
 /**
@@ -18,7 +18,7 @@ public class DemoApiFallbackFactory implements FallbackFactory<DemoApi> {
         return new DemoApi() {
             @Override
             public String print(String str) {
-                return cause.getMessage();
+                return "大哥大嫂过年好";
             }
 
         };
